@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-export default function CreateArea({ onAdd }){
+export default function CreateArea({ onAdd }) {
     const [note, setNote] = useState({
         title: "",
         content: "",
     })
 
     function handleChange(e) {
-        const {name, value} = e.target
+        const { name, value } = e.target
 
         setNote(prevNote => {
             return {
@@ -17,18 +17,22 @@ export default function CreateArea({ onAdd }){
         })
     }
 
-    function submitNote(e){
+    function submitNote(e) {
         onAdd(note);
+        setNote({
+            title: "",
+            content: "",
+        })
         e.preventDefault();
     }
 
     return (
-      <div>
-        <form>
-            <input name="title" placeholder="Title" value={note.title} onChange={handleChange} />
-            <textarea name="content" placeholder="Take a note..." rows="3" value={note.content} onChange={handleChange} />
-            <button onClick={submitNote}>Add</button>
-        </form>
-      </div>  
+        <div>
+            <form>
+                <input name="title" placeholder="Title" value={note.title} onChange={handleChange} />
+                <textarea name="content" placeholder="Take a note..." rows="3" value={note.content} onChange={handleChange} />
+                <button onClick={submitNote}>Add</button>
+            </form>
+        </div>
     );
 }
