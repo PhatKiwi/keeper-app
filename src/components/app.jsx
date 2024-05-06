@@ -2,13 +2,18 @@ import React from "react";
 import Header from "./header";
 import Footer from "./footer";
 import Note from "./note";
-import notes from "../notes"
+import CreateArea from "./create";
 
 function App() {
+    function addNote(note) {
+
+    }
+
     return (
         <div>
             <Header />
-            {notes.map(note => <Note key={note.id} title={note.title} content={note.content} />)}
+            <CreateArea onAdd={addNote} />
+            <Note title="Note Title" content="Note Body" />
             <Footer />
         </div>
     )
